@@ -16,10 +16,10 @@ response = s3_client.list_buckets()
 #taking each bucket and checking whether it is encrypted or not
 for bucket in response['Buckets']:
   
-  #this try block will run only for the buckets which are encrypted otherwise the code will failes for not-encrypted buckets and then the except block will run
+  #this try block will run only for the buckets which are encrypted otherwise the code will fail for non-encrypted buckets and then the except block will run
     try:
         
-    #checking whether the bucket is encrypted or not by using get_bucket_encryption() function and passing the bucket name to it
+    #getting the bucket encryption type and by this we can check whether the bucket is encrypted or not using get_bucket_encryption() function and passing the bucket name to it
         enc = s3.get_bucket_encryption(Bucket=bucket['Name'])
     
     #if the above function runs successfully then fetching the bucket encryption type and algorithm
